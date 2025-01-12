@@ -1,3 +1,18 @@
+.am-pm-select {
+  width: 150px; /* Adjust the width as needed */
+  height: 40px; /* Height of the select box */
+  padding-right: 30px; /* Create space for the clock icon */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  appearance: none; /* Remove default dropdown arrow */
+  background: url('clock.jpg') no-repeat right 10px center, #fff; /* Position the icon to the right */
+  background-size: 20px 20px; /* Size the clock icon appropriately */
+  overflow-y: auto; /* Enable vertical scrolling */
+  cursor: pointer;
+}
+
+
 .App {
   width: 100%;
   font-family: 'Roboto', sans-serif;
@@ -100,21 +115,6 @@ select {
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 12px;
-  cursor: pointer;
-}
-
-
-.am-pm-select {
-  width: 150px; /* Adjust the width as needed */
-  height: 40px; /* Height of the select box */
-  padding-right: 30px; /* Create space for the clock icon */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  appearance: none; /* Remove default dropdown arrow */
-  background: url('C:\\Users\\alvin\\Desktop\\Personal Projects\\badmintonBookingWebsite\\frontend\\public\\clock.jpg') no-repeat right 10px center, #fff; /* Position the icon to the right */
-  background-size: 20px 20px; /* Size the clock icon appropriately */
-  overflow-y: auto; /* Enable vertical scrolling */
   cursor: pointer;
 }
 
