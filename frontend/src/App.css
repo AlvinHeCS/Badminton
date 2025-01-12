@@ -1,0 +1,229 @@
+.App {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-header {
+  background-color: #fff;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  padding-left: 430px;
+}
+
+.email {
+  font-size: 15px;
+  color: #4e4e4e;
+  padding-right: 430px;
+  padding-top:5px;
+}
+
+.search-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.search-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  text-align: left;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+input, button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes jiggle {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.jiggle {
+  animation: jiggle 0.3s ease;
+  border: 2px solid red;
+}
+
+select {
+  width: 200px;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"%3E%3Cpath fill="%23333" d="M2 0L0 2h4zm0 5L0 3h4z"/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  cursor: pointer;
+}
+
+
+.am-pm-select {
+  width: 150px; /* Adjust the width as needed */
+  height: 40px; /* Height of the select box */
+  padding-right: 30px; /* Create space for the clock icon */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  appearance: none; /* Remove default dropdown arrow */
+  background: url('C:\\Users\\alvin\\Desktop\\Personal Projects\\badmintonBookingWebsite\\frontend\\public\\clock.jpg') no-repeat right 10px center, #fff; /* Position the icon to the right */
+  background-size: 20px 20px; /* Size the clock icon appropriately */
+  overflow-y: auto; /* Enable vertical scrolling */
+  cursor: pointer;
+}
+
+.court-card {
+  width: 1035px; /* Increase this value for a wider card */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+.court-image-container {
+  flex: 1;
+  min-width: 150px;
+  max-width: 300px;
+  overflow: hidden;
+}
+
+.court-image {
+  width: 300px; /* Adjust image width to match the new card size */
+  height: auto;
+  object-fit: cover;
+}
+
+.court-info {
+  flex: 1; /* Allow the info section to take up the remaining space */
+  padding: 16px;
+}
+
+.court-results {
+  margin-top: px;
+  justify-content: right; /* Center the items horizontally */
+  flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
+  gap: 10px; /* Reduced spacing between cards */
+  padding: 10px; /* Reduced padding for the container */
+  background-color: #f9f9f9;
+  border-radius: 8px; 
+}
+
+.maps-link {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  display: block;
+}
+
+.maps-link:hover {
+  text-decoration: underline;
+}
+
+.court-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Enhance shadow */
+}
+
+.court-info p {
+  display: right;
+  margin: 14px 0;
+  color: #555;
+  line-height: 1.0;
+}
+
+.court-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.court-price {
+  font-size: 16px;
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #c9c5c9; /* Darker accent on hover */
+}
+
+
+/* Initially centered */
+.initial-view {
+  margin-top: 40vh; /* Push the section to center of the page */
+  transition: margin-top 0.5s ease;
+}
+
+/* Move to the top */
+.results-view {
+  margin-top: 20px; /* Adjust this value as needed */
+  transition: margin-top 0.5s ease;
+}
+
+.court-header {
+  display: center;
+  align-items: center; /* Align items vertically */
+  gap: 8px; /* Add small spacing between the name and maps link */
+}
