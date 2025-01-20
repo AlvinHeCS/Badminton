@@ -15,7 +15,7 @@ NBCUrl = "https://nbc.yepbooking.com.au/ajax/ajax.schema.php"
 NBCName = ["NBC Silverwater", "NBC Seven Hills", "NBC South Granville", "NBC Castle Hill", "NBC Alexandria"]
 NBCLocations = ["2b/172 Silverwater Rd, Silverwater NSW 2128", "3/17 Stanton Rd, Seven Hills NSW 2147", "3F/62 Ferndell St, South Granville NSW 2142", "3/16 Anella Ave, Castle Hill NSW 2154", "8/190 Bourke Rd, Alexandria NSW 2015"]
 NBCGoogleMaps = ["https://www.google.com/maps/place/NBC+Silverwater/@-33.8297278,151.0463601,17z/data=!3m1!4b1!4m6!3m5!1s0x6b12a4a057af8d55:0x4610331b3c4839a2!8m2!3d-33.8297323!4d151.048935!16s%2Fg%2F1q6cfqnkc?hl=en&entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D", "https://www.google.com/maps/place/NBC+Seven+Hills/@-33.7706085,150.9506251,17z/data=!3m2!4b1!5s0x6b12989d2383cd6f:0x32434b9567eb16eb!4m6!3m5!1s0x6b12989d6dc62559:0x4ef989e792603093!8m2!3d-33.770613!4d150.9532!16s%2Fg%2F11c1xjj_v1?hl=en&entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D", "https://www.google.com/maps/place/NBC+Granville/@-33.8688954,151.004471,17z/data=!3m1!4b1!4m6!3m5!1s0x6b12bd7942180b8f:0x9ff01957c371c678!8m2!3d-33.8688999!4d151.0070459!16s%2Fg%2F11q24026y9?hl=en&entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D", "https://www.google.com/maps/place/NBC+Castle+Hill/@-33.7260253,150.9789682,17z/data=!3m1!4b1!4m6!3m5!1s0x6b12a1b54241fb77:0x8706569ef6ac35b!8m2!3d-33.7260298!4d150.9815431!16s%2Fg%2F11smfhd646?hl=en&entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D", "https://www.google.com/maps/place/NBC+Alexandria/@-33.9172217,151.1897761,17z/data=!3m2!4b1!5s0x6b12b1add3036fe5:0x78dd4f4e29552217!4m6!3m5!1s0x6b12b18687e34655:0x5e117607f63d3fa7!8m2!3d-33.9172262!4d151.192351!16s%2Fg%2F11rvcvvqll?hl=en&entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D"]
-NBCLocationLatLong = ["(-33.829571, 151.048904)", "(-33.770851, 150.952850)", "(-33.863899, 151.010003)", "(-33.726119, 150.981252)", "(-33.905908, 151.201367)"]
+NBCLocationLatLong = ["(-33.829571, 151.048904)", "(-33.770851, 150.952850)", "(-33.863899, 151.010010)", "(-33.726119, 150.981252)", "(-33.905908, 151.201367)"]
 NBCLocationImages = ["/NBCSilverwater.jpg", "/NBCSevenHills.jpg", "/NBCGranville.jpg", "/NBCCastleHill.jpg", "/NBCAlexandria.jpg"]
 NBCLocationIds = [1,2,4,5,6]
 
@@ -25,8 +25,8 @@ alphaUrl = "https://alphabadminton.yepbooking.com.au/ajax/ajax.schema.php"
 alphaName = ["Alpha Badminton Centre Slough", "Alpha Badminton Centre Egerton", "Alpha Badminton Centre Auburn"]
 alphaLocations = ["47/2 Slough Ave, Silverwater NSW 2128", "46 Egerton St, Silverwater NSW 2128", "Unit 6, Building 2/161 Manchester Rd, Auburn NSW 2144"]
 alphaGoogleMaps = ["https://www.google.com/maps/place/Alpha+Badminton+Centre+(Slough)/@-33.8308407,151.0474581,17z/data=!3m2!4b1!5s0x6b12bc8d5d220fb5:0x65d2dad93184697!4m6!3m5!1s0x6b12a4ad006e1723:0x2d069c7e1d2f0156!8m2!3d-33.8308452!4d151.050033!16s%2Fg%2F1q6kk8p46?hl=en&entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D","https://www.google.com/maps/place/Alpha+Badminton+Centre+(Egerton)/@-33.8344414,151.0430031,17z/data=!3m1!4b1!4m6!3m5!1s0x6b12a365b5ce9599:0xaf5b3329d6c8ab52!8m2!3d-33.8344459!4d151.045578!16s%2Fg%2F11p_89s47l?hl=en&entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D","https://www.google.com/maps/place/Alpha+Badminton+Centre+Auburn/@-33.8454458,151.019012,17z/data=!3m1!4b1!4m6!3m5!1s0x6b12bd9fe93f27f5:0xd6fe1d42d440e244!8m2!3d-33.8454503!4d151.0215869!16s%2Fg%2F11v1973g31?hl=en&entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D"]
-alphaLocationLatLong = ["(-33.832344, 151.052438)", "(-33.834150, 151.045623)", "(-33.846354, 151.026037)"]
-alphaLocationImages = ["/alphaSlough.jpg", "/alphaEgerton.jpg", "/alphaManchester.png"]
+alphaLocationLatLong = ["(-33.832344, 151.052438)", "(-33.834150, 151.045623)", "(-33.846355, 151.026031)"]
+alphaLocationImages = ["/alphaSlough.jpg", "/alphaEgerton.jpg", "/alphaManchester2.png"]
 alphaLocationIds = [1,2,3]
 
 # ATC

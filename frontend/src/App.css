@@ -12,22 +12,36 @@
   cursor: pointer;
 }
 
+#root {
+  height: 100%;
+  /* border: 2px solid rgb(228, 19, 200); */
+}
+
+html, body {
+  height: 100%;
+  margin: 0; /* Remove default body margin */
+  /* border: 2px solid rgb(0, 230, 103); */
+}
 
 .App {
   width: 100%;
   font-family: 'Roboto', sans-serif;
   color: #333;
-  background-color: #f8f9fa;
-  min-height: 100vh;
-  display: flex;
+  background-color: #c9f5bf;
+  /* height: 100%; */
+  min-height: 100%;
+  /* display: flex; */
   flex-direction: column;
   align-items: center;
+  /* border: 2px solid rgb(21, 247, 0); */
 }
 
 .app-header {
   background-color: #fff;
   width: 100%;
-  padding: 20px 40px;
+  height: 80px;
+  min-height: 80px; 
+  /* border: 2px solid red; */
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #ddd;
@@ -38,18 +52,27 @@
   font-weight: bold;
   color: #333;
   padding-left: 430px;
+  padding-top: 25px;
 }
 
 .email {
   font-size: 15px;
   color: #4e4e4e;
   padding-right: 430px;
-  padding-top:5px;
+  padding-top: 33px;
 }
 
 .search-section {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   text-align: center;
+  width: 100%; /* Full width of the viewport */
+  height: 100%; /* Full height of the viewport */
+  display: flex; /* Flexbox for centering */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  background-color: #c9f5bf; /* Grey background color */
+  /* border: 2px solid red; */
 }
 
 .search-form {
@@ -153,7 +176,7 @@ select {
   flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
   gap: 10px; /* Reduced spacing between cards */
   padding: 10px; /* Reduced padding for the container */
-  background-color: #f9f9f9;
+  background-color: #f5f5f5;
   border-radius: 8px; 
 }
 
@@ -212,18 +235,42 @@ select {
 
 /* Initially centered */
 .initial-view {
-  margin-top: 40vh; /* Push the section to center of the page */
+  margin-top: 10%;
   transition: margin-top 0.5s ease;
 }
 
 /* Move to the top */
 .results-view {
-  margin-top: 20px; /* Adjust this value as needed */
+  margin-top: 2%; 
   transition: margin-top 0.5s ease;
+  background-color: #f5f5f5;
 }
 
 .court-header {
   display: center;
   align-items: center; /* Align items vertically */
   gap: 8px; /* Add small spacing between the name and maps link */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c9f5bf;
+  /* border: 2px solid red; */
+  width: 200px;
+  height: 200px;
+  margin-left: 45%;
+  margin-top: 7.5%;
+  margin-bottom: -180px;
+  /* border: 2px solid red; */
+}
+
+.styled-img {
+  width: 200px;
+  margin: 10%;
+  /* border: 2px solid red; */
+  background-color: #c9f5bf;
+  height: auto; /* Maintains aspect ratio */
+  display: center
 }

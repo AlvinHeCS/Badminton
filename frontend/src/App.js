@@ -50,7 +50,11 @@ function App() {
       </header>
       <main>
         <section className={`search-section ${showResults ? "results-view" : "initial-view"}`}>
-          
+          { !showResults && 
+            <div className="img-container">
+              <img src="/shuttleCock.png" alt="shuttleCock" className="styled-img" />
+            </div> 
+          }
           <h2>Find Your Court</h2>
           <form onSubmit={handleSubmit} className="search-form">
             <div className="input-group">
