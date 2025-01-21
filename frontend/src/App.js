@@ -45,7 +45,7 @@ function App() {
   return (
     <div className="App">
       <header className="app-header">
-        <div className="logo">BadmintonBooking</div>
+        <div className="logo">Badminton Booking</div>
         <div className="email">Badmintonbookingcourt@gmail.com</div>
       </header>
       <main>

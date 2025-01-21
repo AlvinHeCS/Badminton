@@ -39,6 +39,29 @@ ATCLocationImages = ["/ATCFiveDock.jpg"]
 ATCLocationLatLong = ["(-33.870441, 151.119598)"]
 ATCLocationIds = [3]
 
+# Worx
+# Botany
+worxBotanyBaseURL = "https://badmintoncentre-botany.yepbooking.com.au/"
+worxBotanyUrl = "https://badmintoncentre-botany.yepbooking.com.au/ajax/ajax.schema.php"
+worxBotanyName = ["Badminton Worx Botany"]
+worxBotanyLocations = ["Unit 2/30 Sir Joseph Banks St, Botany NSW 2019"]
+worxBotanyGoogleMaps = ["https://www.google.com/maps/place/BadmintonWorx+-+Botany/@-33.9495652,151.2003517,17z/data=!3m1!4b1!4m6!3m5!1s0x6b12b13dead7d39d:0x925b3f5725fcc5f0!8m2!3d-33.9495697!4d151.2029266!16s%2Fg%2F11c2kfl3xk?entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D"]
+worxBotanyLocationImages = ["/worxBotany.jpg"]
+worxBotanyLocationLatLong = ["(-33.950031, 151.203033)"]
+worxBotanyLocationIds = [1]
+
+# Norwest
+worxNorwestBaseUrl = "https://badmintonworx-norwest.yepbooking.com.au/"
+worxNorwestUrl = "https://badmintonworx-norwest.yepbooking.com.au/ajax/ajax.schema.php"
+worxNorwestName = ["Badminton Worx Norwest Building 1", "Badminton Worx Norwest Building 2"]
+worxNorwestLocations = ["2/2 Inglewood Pl, Norwest NSW 2153", "2/2 Inglewood Pl, Norwest NSW 2153"]
+worxNorwestGoogleMaps = ["https://www.google.com/maps/place/BadmintonWorx+Norwest/@-33.735854,150.9563707,17z/data=!3m2!4b1!5s0x6b12a1fc6334be71:0xcee16ea8bd0a5494!4m6!3m5!1s0x6b12a1b467ba3e39:0x6ec70e335995fc6c!8m2!3d-33.7358585!4d150.9589456!16s%2Fg%2F11fmxj3ck5?entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D", "https://www.google.com/maps/place/BadmintonWorx+Norwest/@-33.735854,150.9563707,17z/data=!3m2!4b1!5s0x6b12a1fc6334be71:0xcee16ea8bd0a5494!4m6!3m5!1s0x6b12a1b467ba3e39:0x6ec70e335995fc6c!8m2!3d-33.7358585!4d150.9589456!16s%2Fg%2F11fmxj3ck5?entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D"]
+worxNorwestLocationImages = ["/worxNorwest1.jpg", "/worxNorwest2.jpg"]
+worxNorwestLocationLatLong = ["(-33.736469, 150.958298)", "(-33.736469, 150.958298)"]
+worxNorwestLocationIds = [1, 4]
+
+# 
+
 
 # add badminton company scrappers here
 def yepBookingScrapper(baseUrl, url, day, month, locationId):
@@ -80,7 +103,10 @@ def yepBookingScrapper(baseUrl, url, day, month, locationId):
     else:
         print(f"Failed to fetch data. Status code: {response.status_code}")
         return 1
-    
+def rockettoScrapper():
+    print("implement this")
+
+
 # returns location availability for all company locations in a list
 def informationForAllLocations(day, month, locationIds, baseUrl, url):
     BookingInfo = []
@@ -147,6 +173,10 @@ def findAllAvaliabilities(day, month, startTime, endTime, noCourts):
 
     updated_data += [tup + ("https://australia-badminton-development-centre.yepbooking.com.au/",) for tup in noCourtsFilter(yepAvaliabilities(day, month, startTime, endTime, ATCLocations, ATCLocationLatLong, ATCLocationIds, ATCBaseUrl, ATCUrl, noCourts, ATCLocationImages, ATCName, ATCGoogleMaps), noCourts)]
 
+
+    updated_data += [tup + ("https://badmintoncentre-botany.yepbooking.com.au/", ) for tup in noCourtsFilter(yepAvaliabilities(day, month, startTime, endTime, worxBotanyLocations, worxBotanyLocationLatLong, worxBotanyLocationIds, worxBotanyBaseUrl, worxBotanyUrl, noCourts, worxBotanyLocationImages, worxBotanyName, worxBotanyGoogleMaps), noCourts)]
+
+    updated_data
     return updated_data
 
 def sortByDistance(destination, avaliabilities):
@@ -169,4 +199,8 @@ def sortByDistance(destination, avaliabilities):
 
 # you cannot book 362 days in advanced otherwise u get an error from the websites
 
-#print(helperFunctions.aggregateCourts(sortByDistance(helperFunctions.stringToLatLong("(-33.849602, 151.032745)"), findAllAvaliabilities(29, 1, "10:00pm", "11:00pm", 2))))
+#print(helperFunctions.aggregateCourts(sortByDistance(helperFunctions.stringToLatLong("(-33.849602, 151.032745)"), findAllAvaliabilities(23, 1, "10:00pm", "11:00pm", 2))))
+
+#print(yepAvaliabilities(23, 1, "10:00pm",  "11:00pm", worxBotanyLocations, worxBotanyLocationLatLong, worxBotanyLocationIds, worxBotanyBaseURL, worxBotanyURL, 1, worxBotanyLocationImages, worxBotanyName, worxBotanyGoogleMaps))
+#yepAvaliabilities(day, month, startTime, endTime, alphaLocations, alphaLocationLatLong, alphaLocationIds, alphaBaseUrl, alphaUrl, noCourts, alphaLocationImages, alphaName, alphaGoogleMaps)
+print(yepAvaliabilities(25, 1, "4:00pm",  "5:00pm", worxNorwestLocations, worxNorwestLocationLatLong, worxNorwestLocationIds, worxNorwestBaseUrl, worxNorwestUrl, 1, worxNorwestLocationImages, worxNorwestName, worxNorwestGoogleMaps))
