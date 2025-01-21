@@ -11,13 +11,13 @@ def convertToDic(raw_data):
     # Convert tuples to list of dictionaries
     structured_data = [
         {
-            "courtNos": court[0],
-            "address": court[1],
-            "price": court[3],
-            "URL": court[7],
-            "image": court[4],
-            "name": court[5],
-            "mapsURL": court[6],
+            "courtNos": court[0], 
+            "address": court[1], 
+            "price": court[4],
+            "URL": court[5],
+            "image": court[6],
+            "name": court[2],
+            "mapsURL": court[7],
             #"rating": court[7]
         }
         for court in raw_data
@@ -36,7 +36,7 @@ def search_courts():
     day = data.get('day')
     response_data = convertToDic(helperFunctions.aggregateCourts(badmintonBooking.sortByDistance(helperFunctions.stringToLatLong(location), badmintonBooking.findAllAvaliabilities(day, month, str(start_time), str(end_time), int(noCourts)))))
     print(response_data)
-        
+
     return jsonify(response_data)
 
 if __name__ == '__main__':

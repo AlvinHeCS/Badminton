@@ -41,7 +41,7 @@ ATCLocationIds = [3]
 
 # Worx
 # Botany
-worxBotanyBaseURL = "https://badmintoncentre-botany.yepbooking.com.au/"
+worxBotanyBaseUrl = "https://badmintoncentre-botany.yepbooking.com.au/"
 worxBotanyUrl = "https://badmintoncentre-botany.yepbooking.com.au/ajax/ajax.schema.php"
 worxBotanyName = ["Badminton Worx Botany"]
 worxBotanyLocations = ["Unit 2/30 Sir Joseph Banks St, Botany NSW 2019"]
@@ -60,7 +60,25 @@ worxNorwestLocationImages = ["/worxNorwest1.jpg", "/worxNorwest2.jpg"]
 worxNorwestLocationLatLong = ["(-33.736469, 150.958298)", "(-33.736469, 150.958298)"]
 worxNorwestLocationIds = [1, 4]
 
-# 
+# Yennora
+worxYennoraBaseUrl = "https://badmintoncentre-yennora.yepbooking.com.au/"
+worxYennoraUrl = "https://badmintoncentre-yennora.yepbooking.com.au/ajax/ajax.schema.php"
+worxYennoraName = ["Badminton Worx Yennora"]
+worxYennoraLocations = ["Unit 7 B/26 Nelson Rd, Yennora NSW 2161"]
+worxYennoraGoogleMaps = ["https://www.google.com/maps/place/BadmintonWorx+Yennora/@-33.8658291,150.9652316,17z/data=!3m1!4b1!4m6!3m5!1s0x6b12bd973b5439e5:0x9a21c6f43e10c3!8m2!3d-33.8658336!4d150.9678065!16s%2Fg%2F11ryr6mvcv?entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D"]
+worxYennoraLocationImages = ["/worxYennora.jpg"]
+worxYennoraLocationLatLong = ["(-33.865341, 150.968246)"]
+worxYennoraLocationIds = [1]
+
+# # KBC
+KBCBaseUrl = "https://kbcnsw.yepbooking.com.au/"
+KBCUrl = "https://kbcnsw.yepbooking.com.au/ajax/ajax.schema.php"
+KBCName = ["KBC Rydalmere"]
+KBCLocations = ["20 South St, Rydalmere NSW 2116"]
+KBCGoogleMaps = ["https://www.google.com/maps/place/KBC+NSW/@-33.8149122,151.0328255,17z/data=!3m1!4b1!4m6!3m5!1s0x6b12a3e5f6791173:0xc50dce1948455b83!8m2!3d-33.8149167!4d151.0354004!16s%2Fg%2F11tfvkplzc?entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D"]
+KBCLocationImages = ["/KBCRydalmere.jpg"]
+KBClocationLatLong = ["(-33.814892, 151.035355)"]
+KBCLocationIds = [1]
 
 
 # add badminton company scrappers here
@@ -167,16 +185,17 @@ def findAllAvaliabilities(day, month, startTime, endTime, noCourts):
     
     updated_data = [tup + ("https://nbc.yepbooking.com.au/",) for tup in noCourtsFilter(yepAvaliabilities(day, month, startTime, endTime, NBCLocations, NBCLocationLatLong, NBCLocationIds, NBCBaseUrl, NBCUrl, noCourts, NBCLocationImages, NBCName, NBCGoogleMaps), noCourts)]
     
-
     updated_data += [tup + ("https://alphabadminton.yepbooking.com.au/",) for tup in noCourtsFilter(yepAvaliabilities(day, month, startTime, endTime, alphaLocations, alphaLocationLatLong, alphaLocationIds, alphaBaseUrl, alphaUrl, noCourts, alphaLocationImages, alphaName, alphaGoogleMaps), noCourts)]
-
 
     updated_data += [tup + ("https://australia-badminton-development-centre.yepbooking.com.au/",) for tup in noCourtsFilter(yepAvaliabilities(day, month, startTime, endTime, ATCLocations, ATCLocationLatLong, ATCLocationIds, ATCBaseUrl, ATCUrl, noCourts, ATCLocationImages, ATCName, ATCGoogleMaps), noCourts)]
 
-
     updated_data += [tup + ("https://badmintoncentre-botany.yepbooking.com.au/", ) for tup in noCourtsFilter(yepAvaliabilities(day, month, startTime, endTime, worxBotanyLocations, worxBotanyLocationLatLong, worxBotanyLocationIds, worxBotanyBaseUrl, worxBotanyUrl, noCourts, worxBotanyLocationImages, worxBotanyName, worxBotanyGoogleMaps), noCourts)]
 
-    updated_data
+    updated_data += [tup + ("https://badmintonworx-norwest.yepbooking.com.au/", ) for tup in noCourtsFilter(yepAvaliabilities(day, month, startTime, endTime, worxNorwestLocations, worxNorwestLocationLatLong, worxNorwestLocationIds, worxNorwestBaseUrl, worxNorwestUrl, noCourts, worxNorwestLocationImages, worxNorwestName, worxNorwestGoogleMaps), noCourts)]
+
+    updated_data += [tup + ("https://badmintoncentre-yennora.yepbooking.com.au/", ) for tup in noCourtsFilter(yepAvaliabilities(day, month, startTime, endTime, worxYennoraLocations, worxYennoraLocationLatLong, worxBotanyLocationIds, worxYennoraBaseUrl, worxYennoraUrl, noCourts, worxYennoraLocationImages, worxYennoraName, worxYennoraGoogleMaps), noCourts)]
+
+    updated_data += [tup + ("https://kbcnsw.yepbooking.com.au/", ) for tup in noCourtsFilter(yepAvaliabilities(day, month, startTime, endTime, KBCLocations, KBClocationLatLong, KBCLocationIds, KBCBaseUrl, KBCUrl, noCourts, KBCLocationImages, KBCName, KBCGoogleMaps), noCourts)]
     return updated_data
 
 def sortByDistance(destination, avaliabilities):
@@ -203,4 +222,7 @@ def sortByDistance(destination, avaliabilities):
 
 #print(yepAvaliabilities(23, 1, "10:00pm",  "11:00pm", worxBotanyLocations, worxBotanyLocationLatLong, worxBotanyLocationIds, worxBotanyBaseURL, worxBotanyURL, 1, worxBotanyLocationImages, worxBotanyName, worxBotanyGoogleMaps))
 #yepAvaliabilities(day, month, startTime, endTime, alphaLocations, alphaLocationLatLong, alphaLocationIds, alphaBaseUrl, alphaUrl, noCourts, alphaLocationImages, alphaName, alphaGoogleMaps)
-print(yepAvaliabilities(25, 1, "4:00pm",  "5:00pm", worxNorwestLocations, worxNorwestLocationLatLong, worxNorwestLocationIds, worxNorwestBaseUrl, worxNorwestUrl, 1, worxNorwestLocationImages, worxNorwestName, worxNorwestGoogleMaps))
+#print(helperFunctions.extract_available_courts(yepBookingScrapper(worxNorwestBaseUrl, worxNorwestUrl, 22, 1, 1)))
+# helperFunctions.aggregateCourts
+print(helperFunctions.aggregateCourts(sortByDistance(helperFunctions.stringToLatLong("(-33.849602, 151.032745)"), findAllAvaliabilities(22, 1, "2:00pm", "3:00pm", 2))))
+#print(yepAvaliabilities(22, 1, "2:00pm",  "3:00pm", worxNorwestLocations, worxNorwestLocationLatLong, worxNorwestLocationIds, worxNorwestBaseUrl, worxNorwestUrl, 1, worxNorwestLocationImages, worxNorwestName, worxNorwestGoogleMaps))

@@ -199,23 +199,38 @@ def haversine_distance(lat1, lng1, lat2, lng2):
     return R * c  # Distance in kilometers
 
 
+# aggregates based on name
 def aggregateCourts(data):
-    combined = defaultdict(lambda: {'court_ids': '', 'latlong': '', 'price': 0, 'url': ''})
+    combined = defaultdict(lambda: {
+        'court_ids': '', 'address': '', 'latlong': '', 'price': 0, 'url': '', 'image': '', 'mapsURL': ''})
 
-    for court_id, address, latlong, price, url, image, name, mapsURL in data:
-        if combined[address]['court_ids']:
-            combined[address]['court_ids'] += f", {court_id}"
+    for court_id, address, latlong, price, image, name, mapsURL, url in data:
+        normalized_name = name.strip().lower()  # Normalize the name for consistent grouping
+        
+        # Add court_id to the aggregated string
+        if combined[normalized_name]['court_ids']:
+            combined[normalized_name]['court_ids'] += f", {court_id}"
         else:
-            combined[address]['court_ids'] = str(court_id)
-        combined[address]['latlong'] = latlong
-        combined[address]['price'] = price
-        combined[address]['url'] = url
-        combined[address]['image'] = image
-        combined[address]['name'] = name
-        combined[address]['mapsURL'] = mapsURL
-        #combined[address]['rating'] = rating
+            combined[normalized_name]['court_ids'] = str(court_id)
+        
+        # Copy other attributes (assuming they are consistent across entries with the same name)
+        combined[normalized_name]['address'] = address
+        combined[normalized_name]['latlong'] = latlong
+        combined[normalized_name]['price'] = price
+        combined[normalized_name]['url'] = url
+        combined[normalized_name]['image'] = image
+        combined[normalized_name]['mapsURL'] = mapsURL
 
-    return [(value['court_ids'], address, value['latlong'], value['price'], value['url'], value['image'], value['name'], value['mapsURL']) for address, value in combined.items()]
+    # Convert the combined data to the desired output format
+    return [
+        (
+            value['court_ids'], value['address'], name, 
+            value['latlong'], value['price'], value['url'], 
+            value['image'], value['mapsURL']
+        )
+        for name, value in combined.items()
+    ]
+
 
 def getGoogleStarRating(url):
     headers = {

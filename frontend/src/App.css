@@ -210,10 +210,14 @@ select {
   margin: 0;
 }
 
-.court-price {
+.court-info .court-price {
   font-size: 16px;
-  color: #27ae60;
+  color: #3aaf54;
   font-weight: bold;
+}
+
+.price-label {
+  color: #555; 
 }
 
 .cta-button {

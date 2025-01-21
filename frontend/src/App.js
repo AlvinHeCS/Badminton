@@ -148,7 +148,9 @@ function App() {
                         </div>
                         <p><strong>Address:</strong> {court.address}</p>
                         <p><strong>Courts Free:</strong> {court.courtNos}</p>
-                        <p className="court-price"><strong>Price:</strong> ${court.price}</p>
+                        <p className="court-price">
+                          <span className="price-label"><strong>Price:</strong></span> ${court.price}
+                        </p>
                         <a href={court.URL} target="_blank" rel="noopener noreferrer" className="cta-button">Book Now</a>
                       </div>
                     </div>
