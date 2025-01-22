@@ -77,6 +77,7 @@ function App() {
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 className={showError && !date ? "jiggle" : ""}
+                max={new Date(Date.now() + 350 * 24 * 60 * 60 * 1000).toISOString().split("T")[0]}
               />
               <select
                 value={startTime}
