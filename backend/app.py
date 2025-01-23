@@ -5,7 +5,7 @@ import badmintonBooking
 import helperFunctions
 import os
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__, static_folder='../static')
 CORS(app)
 
 def convertToDic(raw_data):
