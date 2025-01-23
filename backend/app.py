@@ -1,11 +1,11 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, render_template
 from flask_cors import CORS
 import logging
 import badmintonBooking
 import helperFunctions
 import os
 
-app = Flask(__name__, static_folder='../static')
+app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
 
 def convertToDic(raw_data):
@@ -25,15 +25,14 @@ def convertToDic(raw_data):
     ]
     return structured_data
 
-# Serve the React app
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def serve(path):
-    if path != "" and path is not None and app.static_folder:
-        # If the file exists in the static folder, serve it
-        return send_from_directory(app.static_folder, path)
-    # Otherwise, serve index.html
-    return send_from_directory(app.static_folder, 'index.html')
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+# Serve static files like CSS, JS, images
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory(app.static_folder, path)
 
 @app.route('/api/search', methods=['POST'])
 def search_courts():
