@@ -3,6 +3,7 @@ from flask_cors import CORS
 import logging
 import badmintonBooking
 import helperFunctions
+import os
 
 app = Flask(__name__, static_folder='static')
 CORS(app)
@@ -56,4 +57,5 @@ def search_courts():
     return jsonify(response_data)
 
 if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
     app.run(debug=True)
