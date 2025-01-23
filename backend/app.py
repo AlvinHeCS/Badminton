@@ -1,13 +1,13 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import logging
 import badmintonBooking
 import helperFunctions
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 CORS(app)
+
 def convertToDic(raw_data):
-    
     # Convert tuples to list of dictionaries
     structured_data = [
         {
@@ -22,8 +22,17 @@ def convertToDic(raw_data):
         }
         for court in raw_data
     ]
-    
-    return (structured_data)
+    return structured_data
+
+# Serve the React app
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and path is not None and app.static_folder:
+        # If the file exists in the static folder, serve it
+        return send_from_directory(app.static_folder, path)
+    # Otherwise, serve index.html
+    return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/api/search', methods=['POST'])
 def search_courts():
@@ -34,7 +43,14 @@ def search_courts():
     noCourts = data.get('courts', 1)
     month = data.get('month')
     day = data.get('day')
-    response_data = convertToDic(helperFunctions.aggregateCourts(badmintonBooking.sortByDistance(helperFunctions.stringToLatLong(location), badmintonBooking.findAllAvaliabilities(day, month, str(start_time), str(end_time), int(noCourts)))))
+    response_data = convertToDic(
+        helperFunctions.aggregateCourts(
+            badmintonBooking.sortByDistance(
+                helperFunctions.stringToLatLong(location), 
+                badmintonBooking.findAllAvaliabilities(day, month, str(start_time), str(end_time), int(noCourts))
+            )
+        )
+    )
     print(response_data)
 
     return jsonify(response_data)
