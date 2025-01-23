@@ -185,7 +185,7 @@ def noCourtsFilter(avaliability, noCourts):
 
 # Find avaliabilities for all companies
 def findAllAvaliabilities(day, month, startTime, endTime, noCourts):
-    
+    updated_data = []
     updated_data = [tup + ("https://nbc.yepbooking.com.au/",) for tup in noCourtsFilter(yepAvaliabilities(day, month, startTime, endTime, NBCLocations, NBCLocationLatLong, NBCLocationIds, NBCBaseUrl, NBCUrl, noCourts, NBCLocationImages, NBCName, NBCGoogleMaps), noCourts)]
     
     updated_data += [tup + ("https://alphabadminton.yepbooking.com.au/",) for tup in noCourtsFilter(yepAvaliabilities(day, month, startTime, endTime, alphaLocations, alphaLocationLatLong, alphaLocationIds, alphaBaseUrl, alphaUrl, noCourts, alphaLocationImages, alphaName, alphaGoogleMaps), noCourts)]
