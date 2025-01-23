@@ -52,7 +52,7 @@ function App() {
         <section className={`search-section ${showResults ? "results-view" : "initial-view"}`}>
           { !showResults && 
             <div className="img-container">
-              <img src="/shuttleCock.png" alt="shuttleCock" className="styled-img" />
+              <img src="{{ url_for('static', filename='shuttleCock.png') }}" alt="shuttleCock" className="styled-img" />
             </div> 
           }
           <h2>Find Your Court</h2>
