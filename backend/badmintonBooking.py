@@ -165,23 +165,25 @@ def noCourtsFilter(avaliability, noCourts):
     # Group court counts by location
     if avaliability is None:
         return [] 
-
     location_court_count = defaultdict(set)
-    for court_id, location, _, _, _, _, _ in avaliability:
-        location_court_count[location].add(court_id)
-    
-    # Find locations that meet the required number of courts
-    valid_locations = {
-        location for location, courts in location_court_count.items()
-        if len(courts) >= noCourts
-    }
-    
-    # Filter the court list to include only valid locations
-    filtered_court_list = [
-        court for court in avaliability if court[1] in valid_locations
-    ]
-    
-    return filtered_court_list
+    if avaliability is not None:
+        for court_id, location, _, _, _, _, _ in avaliability:
+            location_court_count[location].add(court_id)
+        
+        # Find locations that meet the required number of courts
+        valid_locations = {
+            location for location, courts in location_court_count.items()
+            if len(courts) >= noCourts
+        }
+        
+        # Filter the court list to include only valid locations
+        filtered_court_list = [
+            court for court in avaliability if court[1] in valid_locations
+        ]
+        
+        return filtered_court_list
+    else:
+        return []
 
 # Find avaliabilities for all companies
 def findAllAvaliabilities(day, month, startTime, endTime, noCourts):
