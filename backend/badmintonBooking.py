@@ -163,6 +163,9 @@ def yepAvaliabilities(day, month, startTime, endTime, locations, locationLatLong
 # Filter by courts
 def noCourtsFilter(avaliability, noCourts):
     # Group court counts by location
+    if avaliability is None:
+        return [] 
+
     location_court_count = defaultdict(set)
     for court_id, location, _, _, _, _, _ in avaliability:
         location_court_count[location].add(court_id)
@@ -224,5 +227,5 @@ def sortByDistance(destination, avaliabilities):
 #yepAvaliabilities(day, month, startTime, endTime, alphaLocations, alphaLocationLatLong, alphaLocationIds, alphaBaseUrl, alphaUrl, noCourts, alphaLocationImages, alphaName, alphaGoogleMaps)
 #print(helperFunctions.extract_available_courts(yepBookingScrapper(worxNorwestBaseUrl, worxNorwestUrl, 22, 1, 1)))
 # helperFunctions.aggregateCourts
-print(helperFunctions.aggregateCourts(sortByDistance(helperFunctions.stringToLatLong("(-33.849602, 151.032745)"), findAllAvaliabilities(22, 1, "2:00pm", "3:00pm", 2))))
+#print(helperFunctions.aggregateCourts(sortByDistance(helperFunctions.stringToLatLong("(-33.849602, 151.032745)"), findAllAvaliabilities(22, 1, "2:00pm", "3:00pm", 2))))
 #print(yepAvaliabilities(22, 1, "2:00pm",  "3:00pm", worxNorwestLocations, worxNorwestLocationLatLong, worxNorwestLocationIds, worxNorwestBaseUrl, worxNorwestUrl, 1, worxNorwestLocationImages, worxNorwestName, worxNorwestGoogleMaps))
