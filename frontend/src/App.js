@@ -27,7 +27,7 @@ function App() {
     //REACT_APP_API_URL_PRD='https://badmintoncourtfinder-alvinhecs-a79051a03cbf.herokuapp.com/api'
     
     try {
-      const response = await axios.post('https://badmintoncourtfinder-alvinhecs-a79051a03cbf.herokuapp.com/api', {
+      const response = await axios.post('https://badmintoncourtfinder-alvinhecs-a79051a03cbf.herokuapp.com/api/search', {
         location,
         startTime,
         endTime,
