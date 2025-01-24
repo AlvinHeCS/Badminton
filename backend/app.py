@@ -5,7 +5,7 @@ import badmintonBooking
 import helperFunctions
 import os
 
-app = Flask(__name__, static_folder='../frontend/build/static', template_folder='../frontend/build')
+app = Flask(__name__, static_folder='../frontend/build', template_folder='../frontend/build')
 CORS(app)
 
 
