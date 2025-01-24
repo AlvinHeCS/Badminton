@@ -171,7 +171,7 @@ select {
 }
 
 .court-results {
-  margin-top: px;
+  margin-top: 10px;
   justify-content: right; /* Center the items horizontally */
   flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
   gap: 10px; /* Reduced spacing between cards */

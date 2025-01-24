@@ -52,7 +52,7 @@ function App() {
         <section className={`search-section ${showResults ? "results-view" : "initial-view"}`}>
           { !showResults && 
             <div className="img-container">
-              <img src="{{ url_for('static', filename='shuttleCock.png') }}" alt="shuttleCock" className="styled-img" />
+              <img src="/shuttleCock.png" alt="shuttleCock" className="styled-img" />
             </div> 
           }
           <h2>Find Your Court</h2>
@@ -66,11 +66,15 @@ function App() {
                 <option value="" disabled>Select Location</option>
                 <option value="(-33.901882, 151.200010)">Alexandria</option>
                 <option value="(-33.849602, 151.032745)">Auburn</option>
+                <option value="(-33.950031, 151.203033)">Botany</option>
                 <option value="(-33.732717, 151.005101)">Castle Hill</option>
                 <option value="(-33.867486, 151.130091)">Five Dock</option>
                 <option value="(-33.834011, 151.011124)">Granville</option>
+                <option value="(-33.736469, 150.958298)">Norwest</option>
+                <option value="(-33.814892, 151.035355)">Rydalmere</option>
                 <option value="(-33.776227, 150.932315)">Seven Hills</option>
-                <option value="(-33.837865, 151.046680)">Silverwater</option>
+                <option value="(-33.837865, 151.046680)">Silverwater</option>  
+                <option value="(-33.865341, 150.968246)">Yennora</option>
               </select>
               <input
                 type="date"
@@ -82,7 +86,7 @@ function App() {
               <select
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
-                className="am-pm-select"
+                className={`am-pm-select ${showError && !location ? "jiggle" : ""}`}
               >
                 <option value="" disabled selected>Start Time</option>
                 <option value="09:00AM">09:00AM</option>
@@ -103,7 +107,7 @@ function App() {
               <select
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
-                className="am-pm-select"
+                className={`am-pm-select ${showError && !location ? "jiggle" : ""}`}
               >
                 <option value="" disabled selected>End Time</option>
                 <option value="10:00AM">10:00AM</option>
