@@ -5,7 +5,7 @@ import badmintonBooking
 import helperFunctions
 import os
 
-app = Flask(__name__, static_folder='static', template_folder='templates')
+app = Flask(__name__, static_folder='../frontend/build/static', template_folder='../frontend/build')
 CORS(app)
 
 def convertToDic(raw_data):
@@ -29,10 +29,6 @@ def convertToDic(raw_data):
 def index():
     return render_template('index.html')
 
-# Serve static files like CSS, JS, images
-@app.route('/static/<path:path>')
-def send_static(path):
-    return send_from_directory(app.static_folder, path)
 
 @app.route('/api/search', methods=['POST'])
 def search_courts():
