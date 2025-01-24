@@ -23,8 +23,10 @@ function App() {
 
     const [year, month, day] = date.split('-');
 
+    REACT_APP_API_URL_DEV='http://127.0.0.1:5000/ap'
+    REACT_APP_API_URL_PRD='https://badmintoncourtfinder-alvinhecs-a79051a03cbf.herokuapp.com/api'
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/search', {
+      const response = await axios.post(REACT_APP_API_URL_PRD, {
         location,
         startTime,
         endTime,
