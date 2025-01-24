@@ -14,6 +14,11 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
+# Suppress Flask's built-in static file logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.WARNING)
+
+
 def convertToDic(raw_data):
     # Convert tuples to list of dictionaries
     structured_data = [
