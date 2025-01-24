@@ -8,20 +8,24 @@ import os
 app = Flask(__name__, static_folder='../frontend/build', template_folder='../frontend/build')
 CORS(app)
 
-
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,  # Set to INFO to capture general logs
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 def convertToDic(raw_data):
     # Convert tuples to list of dictionaries
     structured_data = [
         {
-            "courtNos": court[0], 
-            "address": court[1], 
+            "courtNos": court[0],
+            "address": court[1],
             "price": court[4],
             "URL": court[5],
             "image": court[6],
             "name": court[2],
             "mapsURL": court[7],
-            #"rating": court[7]
+            # "rating": court[7]
         }
         for court in raw_data
     ]
@@ -46,6 +50,7 @@ def serve_build_files(path):
 
 @app.route('/api/search', methods=['POST'])
 def search_courts():
+    # Extract and log search parameters
     data = request.json
     location = data.get('location', '').lower()
     start_time = data.get('startTime', '')
@@ -53,15 +58,22 @@ def search_courts():
     noCourts = data.get('courts', 1)
     month = data.get('month')
     day = data.get('day')
+
+    logging.info("Search parameters received: location=%s, start_time=%s, end_time=%s, noCourts=%d, month=%s, day=%s",
+                 location, start_time, end_time, noCourts, month, day)
+
+    # Call helper functions to process the request
     response_data = convertToDic(
         helperFunctions.aggregateCourts(
             badmintonBooking.sortByDistance(
-                helperFunctions.stringToLatLong(location), 
+                helperFunctions.stringToLatLong(location),
                 badmintonBooking.findAllAvaliabilities(day, month, str(start_time), str(end_time), int(noCourts))
             )
         )
     )
-    print(response_data)
+
+    # Log the search results
+    logging.info("Search results: %s", response_data)
 
     return jsonify(response_data)
 
