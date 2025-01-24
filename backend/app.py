@@ -5,8 +5,10 @@ import badmintonBooking
 import helperFunctions
 import os
 
-app = Flask(__name__, static_folder='../frontend/build', template_folder='../frontend/build')
+app = Flask(__name__, static_folder='../frontend/build/static', template_folder='../frontend/build')
 CORS(app)
+
+
 
 def convertToDic(raw_data):
     # Convert tuples to list of dictionaries
@@ -29,6 +31,18 @@ def convertToDic(raw_data):
 def index():
     return render_template('index.html')
 
+@app.route('/static/<path:path>')
+def serve_static(path):
+    return send_from_directory(os.path.join(app.static_folder, 'static'), path)
+
+@app.route('/<path:path>')
+def serve_build_files(path):
+    try:
+        # Try to serve the requested file
+        return send_from_directory(app.static_folder, path)
+    except:
+        # If file is not found, serve the React app (SPA fallback)
+        return render_template('index.html')
 
 @app.route('/api/search', methods=['POST'])
 def search_courts():
