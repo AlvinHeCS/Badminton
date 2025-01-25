@@ -24,10 +24,10 @@ function App() {
     const [year, month, day] = date.split('-');
 
     //REACT_APP_API_URL_DEV='http://127.0.0.1:5000/api/search'
-    //REACT_APP_API_URL_PRD='https://badmintoncourtfinder-alvinhecs-a79051a03cbf.herokuapp.com/api'
+    //REACT_APP_API_URL_PRD='https://badmintoncourtfinder-alvinhecs-a79051a03cbf.herokuapp.com/api/search'
     
     try {
-      const response = await axios.post('https://badmintoncourtfinder-alvinhecs-a79051a03cbf.herokuapp.com/api', {
+      const response = await axios.post('https://badmintoncourtfinder-alvinhecs-a79051a03cbf.herokuapp.com/api/search', {
         location,
         startTime,
         endTime,
