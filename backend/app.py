@@ -21,6 +21,8 @@ log.setLevel(logging.WARNING)
 
 def convertToDic(raw_data):
     # Convert tuples to list of dictionaries
+    logging.info("Raw data received in convertToDic: %s", raw_data)
+
     structured_data = [
         {
             "courtNos": court[0],
@@ -30,7 +32,6 @@ def convertToDic(raw_data):
             "image": court[6],
             "name": court[2],
             "mapsURL": court[7],
-            # "rating": court[7]
         }
         for court in raw_data
     ]
@@ -79,7 +80,7 @@ def search_courts():
 
     # Log the search results
     logging.info("Search results: %s", response_data)
-
+    print(response_data)
     return jsonify(response_data)
 
 if __name__ == '__main__':

@@ -201,10 +201,12 @@ def haversine_distance(lat1, lng1, lat2, lng2):
 
 # aggregates based on name
 def aggregateCourts(data):
+    # print("underneath this is other ---------------------------------------------------------------------------------------")
+    # print(data)
     combined = defaultdict(lambda: {
         'court_ids': '', 'address': '', 'latlong': '', 'price': 0, 'url': '', 'image': '', 'mapsURL': ''})
 
-    for court_id, address, latlong, price, image, name, mapsURL, url in data:
+    for court_id, address, latlong, price, image, name, mapsURL, uiTabs, url in data:
         normalized_name = name.strip().lower()  # Normalize the name for consistent grouping
         
         # Add court_id to the aggregated string
@@ -251,5 +253,3 @@ def getGoogleStarRating(url):
             return 1
         if "☆☆☆☆☆" in line:
             return 0
-
-print(getGoogleStarRating("https://www.google.com/maps/place/NBC+Castle+Hill/@-33.7260253,150.9789682,17z/data=!3m1!4b1!4m6!3m5!1s0x6b12a1b54241fb77:0x8706569ef6ac35b!8m2!3d-33.7260298!4d150.9815431!16s%2Fg%2F11smfhd646?hl=en&entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D"))
