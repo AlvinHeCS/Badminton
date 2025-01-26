@@ -3,9 +3,12 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-      "heroku-postbuild": "cd frontend && npm install && npm run build"
+        "heroku-postbuild": "cd frontend && npm install && npm run build"
     },
     "engines": {
-      "node": "16.x"
+        "node": "16.x"
+    },
+    "dependencies": {
+        "react-icons": "^5.4.0"
     }
-  }
+}

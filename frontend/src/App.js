@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios';
+import { FaSpinner } from 'react-icons/fa';
 
 function App() {
   const [location, setLocation] = useState('');
@@ -11,6 +12,8 @@ function App() {
   const [filteredCourts, setFilteredCourts] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -22,12 +25,13 @@ function App() {
     }
 
     const [year, month, day] = date.split('-');
+    setLoading(true);
 
     //REACT_APP_API_URL_DEV='http://127.0.0.1:5000/api/search'
     //REACT_APP_API_URL_PRD='https://badmintoncourtfinder-alvinhecs-a79051a03cbf.herokuapp.com/api/search'
     
     try {
-      const response = await axios.post('https://badmintoncourtfinder-alvinhecs-a79051a03cbf.herokuapp.com/api/search', {
+      const response = await axios.post('http://127.0.0.1:5000/api/search', {
         location,
         startTime,
         endTime,
@@ -42,9 +46,13 @@ function App() {
       console.error('Error fetching courts:', error);
       setFilteredCourts([]);
       setShowResults(true);
+    } finally {
+      setLoading(false); 
     }
   };
 
+  
+  
   return (
     <div className="App">
       <header className="app-header">
@@ -53,14 +61,15 @@ function App() {
       </header>
       <main>
         <section className={`search-section ${showResults ? "results-view" : "initial-view"}`}>
-          { !showResults && 
+          {!showResults && (
             <div className="img-container">
               <img src="/shuttleCock.png" alt="shuttleCock" className="styled-img" />
-            </div> 
-          }
+            </div>
+          )}
           <h2>Find Your Court</h2>
           <form onSubmit={handleSubmit} className="search-form">
             <div className="input-group">
+              {/* Location Dropdown */}
               <select
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
@@ -76,59 +85,82 @@ function App() {
                 <option value="(-33.736469, 150.958298)">Norwest</option>
                 <option value="(-33.814892, 151.035355)">Rydalmere</option>
                 <option value="(-33.776227, 150.932315)">Seven Hills</option>
-                <option value="(-33.837865, 151.046680)">Silverwater</option>  
+                <option value="(-33.837865, 151.046680)">Silverwater</option>
                 <option value="(-33.865341, 150.968246)">Yennora</option>
               </select>
+  
+              {/* Date Picker */}
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 className={showError && !date ? "jiggle" : ""}
+
                 min={new Date().toISOString().split("T")[0]}
-                max={new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split("T")[0]}
+                max={new Date(new Date().setMonth(new Date().getMonth() + 3))
+                  .toISOString()
+                  .split("T")[0]}
               />
+  
+              {/* Start Time Dropdown */}
               <select
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
-                className={`am-pm-select ${showError && !location ? "jiggle" : ""}`}
+                className={`am-pm-select ${showError && !startTime ? "jiggle" : ""}`}
               >
-                <option value="" disabled selected>Start Time</option>
-                <option value="09:00AM">09:00AM</option>
-                <option value="10:00AM">10:00AM</option>
-                <option value="11:00AM">11:00AM</option>
-                <option value="12:00PM">12:00PM</option>
-                <option value="01:00PM">01:00PM</option>
-                <option value="02:00PM">02:00PM</option>
-                <option value="03:00PM">03:00PM</option>
-                <option value="04:00PM">04:00PM</option>
-                <option value="05:00PM">05:00PM</option>
-                <option value="06:00PM">06:00PM</option>
-                <option value="07:00PM">07:00PM</option>
-                <option value="08:00PM">08:00PM</option>
-                <option value="09:00PM">09:00PM</option>
-                <option value="10:00PM">10:00PM</option>
+                <option value="" disabled>Start Time</option>
+                {[
+                  "09:00AM",
+                  "10:00AM",
+                  "11:00AM",
+                  "12:00PM",
+                  "01:00PM",
+                  "02:00PM",
+                  "03:00PM",
+                  "04:00PM",
+                  "05:00PM",
+                  "06:00PM",
+                  "07:00PM",
+                  "08:00PM",
+                  "09:00PM",
+                  "10:00PM",
+                ].map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))}
               </select>
+  
+              {/* End Time Dropdown */}
               <select
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
-                className={`am-pm-select ${showError && !location ? "jiggle" : ""}`}
+                className={`am-pm-select ${showError && !endTime ? "jiggle" : ""}`}
               >
-                <option value="" disabled selected>End Time</option>
-                <option value="10:00AM">10:00AM</option>
-                <option value="11:00AM">11:00AM</option>
-                <option value="12:00PM">12:00PM</option>
-                <option value="01:00PM">01:00PM</option>
-                <option value="02:00PM">02:00PM</option>
-                <option value="03:00PM">03:00PM</option>
-                <option value="04:00PM">04:00PM</option>
-                <option value="05:00PM">05:00PM</option>
-                <option value="06:00PM">06:00PM</option>
-                <option value="07:00PM">07:00PM</option>
-                <option value="08:00PM">08:00PM</option>
-                <option value="09:00PM">09:00PM</option>
-                <option value="10:00PM">10:00PM</option>
-                <option value="11:00PM">11:00PM</option>
+                <option value="" disabled>End Time</option>
+                {[
+                  "10:00AM",
+                  "11:00AM",
+                  "12:00PM",
+                  "01:00PM",
+                  "02:00PM",
+                  "03:00PM",
+                  "04:00PM",
+                  "05:00PM",
+                  "06:00PM",
+                  "07:00PM",
+                  "08:00PM",
+                  "09:00PM",
+                  "10:00PM",
+                  "11:00PM",
+                ].map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))}
               </select>
+  
+              {/* Number of Courts Input */}
               <input
                 type="number"
                 placeholder="Number of courts"
@@ -137,9 +169,28 @@ function App() {
                 onChange={(e) => setCourts(e.target.value)}
                 className={showError && !courts ? "jiggle" : ""}
               />
-              <button type="submit">Search</button>
+  
+              {/* Search Button */}
+              <div className="search-container">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="search-button"
+                >
+                  {loading ? <FaSpinner className="spinner-icon" /> : "Search"}
+                </button>
+              </div>
             </div>
           </form>
+  
+          {/* Apology Text */}
+          {loading && (
+            <p className="loading-message">
+              Sorry for the load times—currently using a free tier of a web hosting device.
+            </p>
+          )}
+  
+          {/* Court Results */}
           {showResults && (
             <div className="court-results">
               <h3>Available Courts</h3>
@@ -153,14 +204,28 @@ function App() {
                       <div className="court-info">
                         <div className="court-header">
                           <h4 className="court-title">{court.name}</h4>
-                          <a href={court.mapsURL} target="_blank" rel="noopener noreferrer" className="maps-link">maps</a>
+                          <a
+                            href={court.mapsURL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="maps-link"
+                          >
+                            Maps
+                          </a>
                         </div>
                         <p><strong>Address:</strong> {court.address}</p>
                         <p><strong>Courts Free:</strong> {court.courtNos}</p>
                         <p className="court-price">
                           <span className="price-label"><strong>Price:</strong></span> ${court.price}
                         </p>
-                        <a href={court.URL} target="_blank" rel="noopener noreferrer" className="cta-button">Book Now</a>
+                        <a
+                          href={court.URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="cta-button"
+                        >
+                          Book Now
+                        </a>
                       </div>
                     </div>
                   ))}
