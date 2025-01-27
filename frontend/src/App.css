@@ -43,7 +43,8 @@ html, body {
   min-height: 80px; 
   /* border: 2px solid red; */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 30%;
   border-bottom: 1px solid #ddd;
 }
 
@@ -51,16 +52,19 @@ html, body {
   font-size: 24px;
   font-weight: bold;
   color: #333;
-  padding-left: 430px;
-  padding-top: 25px;
+  /* margin-left: 23%; */
+  margin-top: 1.35%;
+  /* border: 2px solid rgb(228, 19, 200); */
 }
 
 .email {
   font-size: 15px;
   color: #4e4e4e;
-  padding-right: 430px;
-  padding-top: 33px;
+  /* margin-right: 23%; */
+  margin-top: 1.75%;
+  /* border: 2px solid rgb(228, 19, 200); */
 }
+
 
 .search-section {
   /* margin-top: 40px; */
@@ -151,6 +155,7 @@ select {
   overflow: hidden;
   display: flex;
   flex-direction: row;
+  /* border: 2px solid red; */
 }
 
 .court-image-container {
@@ -169,6 +174,7 @@ select {
 .court-info {
   flex: 1; /* Allow the info section to take up the remaining space */
   padding: 16px;
+  /* border: 2px solid red; */
 }
 
 .court-results {
@@ -179,6 +185,7 @@ select {
   padding: 10px; /* Reduced padding for the container */
   background-color: #f5f5f5;
   border-radius: 8px; 
+  /* border: 2px solid red; */
 }
 
 .maps-link {
@@ -314,5 +321,48 @@ select {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+/* phone changes */
+
+@media (max-width: 768px) {
+  .logo {
+    margin-top: 6%;
+    font-size: 19px;
+  }
+
+  .email {
+    margin-top: 7%;
+    font-size: 14px;
+  }
+
+/* might instead need to change intial view and result view for this */
+
+  /* Initially centered */
+  .initial-view {
+    margin-top: 20%;
+  }
+
+  /* Move to the top */
+  .results-view {
+    margin-top: 2%; 
+  }
+
+  .court-card {
+    width: 90%; /* Increase this value for a wider card */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    /* border: 2px solid red; */
+  }
+
+  .court-results {
+    width: 90%;
   }
 }
