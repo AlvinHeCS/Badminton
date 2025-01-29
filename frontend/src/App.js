@@ -186,7 +186,7 @@ function App() {
           {/* Apology Text */}
           {loading && (
             <p className="loading-message">
-              Sorry for the load times — currently the site is being hosted on heroku's free tier dynos 🤗.
+              Sorry for the load times — currently the backend is being hosted on Render's free server 🤗.
             </p>
           )}
   
