@@ -154,21 +154,6 @@ def noCourtsFilter(avaliability, noCourts):
     return filtered_court_list
 
 
-# # convert address to latitude and longitude
-# def addressToLatLong(address):
-#     gmaps = googlemaps.Client(key='AIzaSyDHvhgM8GiUP42zy_7qPfmEFMm1xEGqbTA')
-
-#     # Geocoding the address
-#     geocode_result = gmaps.geocode(address)
-
-#     if geocode_result:
-#         location = geocode_result[0]['geometry']['location']
-#         return location
-    
-#     else:
-#         print("Address not found.")
-#         return
-
 
 def stringToLatLong(coord_string):
     # Remove the parentheses and split the string by comma
